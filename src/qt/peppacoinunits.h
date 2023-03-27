@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2021 The Bitcoin Core developers
+// Copyright (c) 2011-2021 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINUNITS_H
-#define BITCOIN_QT_BITCOINUNITS_H
+#ifndef PEPPACOIN_QT_PEPPACOINUNITS_H
+#define PEPPACOIN_QT_PEPPACOINUNITS_H
 
 #include <consensus/amount.h>
 
@@ -26,24 +26,24 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** Bitcoin unit definitions. Encapsulates parsing and formatting
+/** Peppacoin unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class BitcoinUnits: public QAbstractListModel
+class PeppacoinUnits: public QAbstractListModel
 {
     Q_OBJECT
 
 public:
-    explicit BitcoinUnits(QObject *parent);
+    explicit PeppacoinUnits(QObject *parent);
 
-    /** Bitcoin units.
-      @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
+    /** Peppacoin units.
+      @note Source: https://github.com/Peppa-Coin/Peppa-Core/wiki/Units . Please add only sensible ones
      */
     enum class Unit {
-        BTC,
-        mBTC,
-        uBTC,
-        SAT
+        DRI,
+        mDRI,
+        uDRI,
+        CAC
     };
     Q_ENUM(Unit)
 
@@ -66,7 +66,7 @@ public:
     static QString shortName(Unit unit);
     //! Longer description
     static QString description(Unit unit);
-    //! Number of Satoshis (1e-8) per unit
+    //! Number of Cactus (1e-8) per unit
     static qint64 factor(Unit unit);
     //! Number of decimals left
     static int decimals(Unit unit);
@@ -108,9 +108,9 @@ public:
 private:
     QList<Unit> unitlist;
 };
-typedef BitcoinUnits::Unit BitcoinUnit;
+typedef PeppacoinUnits::Unit PeppacoinUnit;
 
-QDataStream& operator<<(QDataStream& out, const BitcoinUnit& unit);
-QDataStream& operator>>(QDataStream& in, BitcoinUnit& unit);
+QDataStream& operator<<(QDataStream& out, const PeppacoinUnit& unit);
+QDataStream& operator>>(QDataStream& in, PeppacoinUnit& unit);
 
-#endif // BITCOIN_QT_BITCOINUNITS_H
+#endif // PEPPACOIN_QT_PEPPACOINUNITS_H
