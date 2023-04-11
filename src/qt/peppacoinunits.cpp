@@ -33,7 +33,7 @@ QString PeppacoinUnits::longName(Unit unit)
     switch (unit) {
     case Unit::DRI: return QString("DRI");
     case Unit::mDRI: return QString("mDRI");
-    case Unit::uDRI: return QString::fromUtf8("µDRI (bits)");
+    case Unit::uDRI: return QString::fromUtf8("µDRI (peppas)");
     case Unit::CAC: return QString("Cactus (cac)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);
@@ -44,7 +44,7 @@ QString PeppacoinUnits::shortName(Unit unit)
     switch (unit) {
     case Unit::DRI: return longName(unit);
     case Unit::mDRI: return longName(unit);
-    case Unit::uDRI: return QString("bits");
+    case Unit::uDRI: return QString("peppas");
     case Unit::CAC: return QString("cac");
     } // no default case, so the compiler can warn about missing cases
     assert(false);

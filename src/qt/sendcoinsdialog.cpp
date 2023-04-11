@@ -1,16 +1,16 @@
-// Copyright (c) 2011-2022 The Bitcoin Core developers
+// Copyright (c) 2011-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitcoin-config.h>
+#include <config/peppacoin-config.h>
 #endif
 
 #include <qt/sendcoinsdialog.h>
 #include <qt/forms/ui_sendcoinsdialog.h>
 
 #include <qt/addresstablemodel.h>
-#include <qt/bitcoinunits.h>
+#include <qt/peppacoinunits.h>
 #include <qt/clientmodel.h>
 #include <qt/coincontroldialog.h>
 #include <qt/guiutil.h>
@@ -185,7 +185,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)
         connect(ui->groupFee, qOverload<int>(&QButtonGroup::buttonClicked), this, &SendCoinsDialog::coinControlUpdateLabels);
 #endif
 
-        connect(ui->customFee, &BitcoinAmountField::valueChanged, this, &SendCoinsDialog::coinControlUpdateLabels);
+        connect(ui->customFee, &PeppacoinAmountField::valueChanged, this, &SendCoinsDialog::coinControlUpdateLabels);
         connect(ui->optInRBF, &QCheckBox::stateChanged, this, &SendCoinsDialog::updateSmartFeeLabel);
         connect(ui->optInRBF, &QCheckBox::stateChanged, this, &SendCoinsDialog::coinControlUpdateLabels);
         CAmount requiredFee = model->wallet().getRequiredFee(1000);
@@ -213,7 +213,7 @@ void SendCoinsDialog::setModel(WalletModel *_model)
             }
         } else if (model->wallet().privateKeysDisabled()) {
             ui->sendButton->setText(tr("Cr&eate Unsigned"));
-            ui->sendButton->setToolTip(tr("Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.").arg(PACKAGE_NAME));
+            ui->sendButton->setToolTip(tr("Creates a Partially Signed Peppacoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.").arg(PACKAGE_NAME));
         }
 
         // set the smartfee-sliders default value (wallets default conf.target or last stored value)
@@ -291,7 +291,7 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa
 
     // process prepareStatus and on error generate message shown to user
     processSendCoinsReturn(prepareStatus,
-        BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), m_current_transaction->getTransactionFee()));
+        PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), m_current_transaction->getTransactionFee()));
 
     if(prepareStatus.status != WalletModel::OK) {
         fNewRecipientAllowed = true;
@@ -303,7 +303,7 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa
     for (const SendCoinsRecipient &rcp : m_current_transaction->getRecipients())
     {
         // generate amount string with wallet name in case of multiwallet
-        QString amount = BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);
+        QString amount = PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);
         if (model->isMultiwallet()) {
             amount.append(tr(" from wallet '%1'").arg(GUIUtil::HtmlEscape(model->getWalletName())));
         }
@@ -335,12 +335,12 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa
         /*: Text to inform a user attempting to create a transaction of their current options. At this stage,
             a user can only create a PSBT. This string is displayed when private keys are disabled and an external
             signer is not available. */
-        question_string.append(tr("Please, review your transaction proposal. This will produce a Partially Signed Bitcoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.").arg(PACKAGE_NAME));
+        question_string.append(tr("Please, review your transaction proposal. This will produce a Partially Signed Peppacoin Transaction (PSBT) which you can save or copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.").arg(PACKAGE_NAME));
     } else if (model->getOptionsModel()->getEnablePSBTControls()) {
         /*: Text to inform a user attempting to create a transaction of their current options. At this stage,
             a user can send their transaction or create a PSBT. This string is displayed when both private keys
             and PSBT controls are enabled. */
-        question_string.append(tr("Please, review your transaction. You can create and send this transaction or create a Partially Signed Bitcoin Transaction (PSBT), which you can save or copy and then sign with, e.g., an offline %1 wallet, or a PSBT-compatible hardware wallet.").arg(PACKAGE_NAME));
+        question_string.append(tr("Please, review your transaction. You can create and send this transaction or create a Partially Signed Peppacoin Transaction (PSBT), which you can save or copy and then sign with, e.g., an offline %1 wallet, or a PSBT-compatible hardware wallet.").arg(PACKAGE_NAME));
     } else {
         /*: Text to prompt a user to review the details of the transaction they are attempting to send. */
         question_string.append(tr("Please, review your transaction."));
@@ -359,7 +359,7 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa
 
         // append transaction fee value
         question_string.append("<span style='color:#aa0000; font-weight:bold;'>");
-        question_string.append(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
+        question_string.append(PeppacoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
         question_string.append("</span><br />");
 
         // append RBF message according to transaction's signalling
@@ -376,12 +376,12 @@ bool SendCoinsDialog::PrepareSendText(QString& question_string, QString& informa
     question_string.append("<hr />");
     CAmount totalAmount = m_current_transaction->getTotalTransactionAmount() + txFee;
     QStringList alternativeUnits;
-    for (const BitcoinUnit u : BitcoinUnits::availableUnits()) {
+    for (const PeppacoinUnit u : PeppacoinUnits::availableUnits()) {
         if(u != model->getOptionsModel()->getDisplayUnit())
-            alternativeUnits.append(BitcoinUnits::formatHtmlWithUnit(u, totalAmount));
+            alternativeUnits.append(PeppacoinUnits::formatHtmlWithUnit(u, totalAmount));
     }
     question_string.append(QString("<b>%1</b>: <b>%2</b>").arg(tr("Total Amount"))
-        .arg(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), totalAmount)));
+        .arg(PeppacoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), totalAmount)));
     question_string.append(QString("<br /><span style='font-size:10pt; font-weight:normal;'>(=%1)</span>")
         .arg(alternativeUnits.join(" " + tr("or") + " ")));
 
@@ -417,7 +417,7 @@ void SendCoinsDialog::presentPSBT(PartiallySignedTransaction& psbtx)
                 fileNameSuggestion.append(" - ");
             }
             QString labelOrAddress = rcp.label.isEmpty() ? rcp.address : rcp.label;
-            QString amount = BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);
+            QString amount = PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount);
             fileNameSuggestion.append(labelOrAddress + "-" + amount);
             first = false;
         }
@@ -703,7 +703,7 @@ void SendCoinsDialog::setBalance(const interfaces::WalletBalances& balances)
             balance = balances.watch_only_balance;
             ui->labelBalanceName->setText(tr("Watch-only balance:"));
         }
-        ui->labelBalance->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), balance));
+        ui->labelBalance->setText(PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), balance));
     }
 }
 
@@ -744,7 +744,7 @@ void SendCoinsDialog::processSendCoinsReturn(const WalletModel::SendCoinsReturn 
         msgParams.second = CClientUIInterface::MSG_ERROR;
         break;
     case WalletModel::AbsurdFee:
-        msgParams.first = tr("A fee higher than %1 is considered an absurdly high fee.").arg(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->wallet().getDefaultMaxTxFee()));
+        msgParams.first = tr("A fee higher than %1 is considered an absurdly high fee.").arg(PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->wallet().getDefaultMaxTxFee()));
         break;
     // included to prevent a compiler warning.
     case WalletModel::OK:
@@ -818,7 +818,7 @@ void SendCoinsDialog::updateFeeMinimizedLabel()
     if (ui->radioSmartFee->isChecked())
         ui->labelFeeMinimized->setText(ui->labelSmartFee->text());
     else {
-        ui->labelFeeMinimized->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), ui->customFee->value()) + "/kvB");
+        ui->labelFeeMinimized->setText(PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), ui->customFee->value()) + "/kvB");
     }
 }
 
@@ -853,7 +853,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
     FeeReason reason;
     CFeeRate feeRate = CFeeRate(model->wallet().getMinimumFee(1000, *m_coin_control, &returned_target, &reason));
 
-    ui->labelSmartFee->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), feeRate.GetFeePerK()) + "/kvB");
+    ui->labelSmartFee->setText(PeppacoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), feeRate.GetFeePerK()) + "/kvB");
 
     if (reason == FeeReason::FALLBACK) {
         ui->labelSmartFee2->show(); // (Smart fee not initialized yet. This usually takes a few blocks...)
@@ -968,7 +968,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString& text)
         }
         else if (!IsValidDestination(dest)) // Invalid address
         {
-            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Bitcoin address"));
+            ui->labelCoinControlChangeLabel->setText(tr("Warning: Invalid Peppacoin address"));
         }
         else // Valid address
         {

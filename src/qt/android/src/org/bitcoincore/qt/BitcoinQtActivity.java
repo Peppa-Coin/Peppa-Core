@@ -1,4 +1,4 @@
-package org.bitcoincore.qt;
+package org.peppacoincore.qt;
 
 import android.os.Bundle;
 import android.system.ErrnoException;
@@ -13,9 +13,9 @@ public class BitcoinQtActivity extends QtActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        final File bitcoinDir = new File(getFilesDir().getAbsolutePath() + "/.bitcoin");
-        if (!bitcoinDir.exists()) {
-            bitcoinDir.mkdir();
+        final File peppacoinDir = new File(getFilesDir().getAbsolutePath() + "/.peppacoin");
+        if (!peppacoinDir.exists()) {
+            peppacoinDir.mkdir();
         }
 
         super.onCreate(savedInstanceState);

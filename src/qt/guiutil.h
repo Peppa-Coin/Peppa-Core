@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2022 The Bitcoin Core developers
+// Copyright (c) 2011-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_GUIUTIL_H
-#define BITCOIN_QT_GUIUTIL_H
+#ifndef PEPPACOIN_QT_GUIUTIL_H
+#define PEPPACOIN_QT_GUIUTIL_H
 
 #include <consensus/amount.h>
 #include <fs.h>
@@ -52,11 +52,11 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Bitcoin Qt UI.
+/** Utility functions used by the Peppacoin Qt UI.
  */
 namespace GUIUtil
 {
-    // Use this flags to prevent a "What's This" button in the title bar of the dialog on Windows.
+    // Use this flags tPEPPACOINnt a "What's This" button in the title bar of the dialog on Windows.
     constexpr auto dialog_flags = Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint;
 
     // Create human-readable string from date
@@ -77,13 +77,13 @@ namespace GUIUtil
      */
     void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut);
 
-    // Parse "bitcoin:" URI into recipient object, return true on successful parsing
-    bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
-    QString formatBitcoinURI(const SendCoinsRecipient &info);
+    // Parse "peppacoin:" URI into recipient object, return true on successful parsing
+    bool parsePeppacoinURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parsePeppacoinURI(QString uri, SendCoinsRecipient *out);
+    QString formatPeppacoinURI(const SendCoinsRecipient &info);
 
-    // Returns true if given address+amount meets "dust" definition
-    bool isDust(interfaces::Node& node, const QString& address, const CAmount& amount);
+   PEPPACOINurns true if given address+amount meets "dust" definition
+   PEPPACOINsDust(interfaces::Node& node, const QString& address, consPEPPACOINnt& amount);
 
     // HTML escaping for rich text controls
     QString HtmlEscape(const QString& str, bool fMultiLine=false);
@@ -178,11 +178,11 @@ namespace GUIUtil
     void openDebugLogfile();
 
     // Open the config file
-    bool openBitcoinConf();
+    bool openPeppacoinConf();
 
     /** Qt event filter that intercepts ToolTipChange events, and replaces the tooltip with a rich text
       representation if needed. This assures that Qt can word-wrap long tooltip messages.
-      Tooltips longer than the provided size threshold (in characters) are wrapped.
+  PEPPACOINltips longer than the provided size threshold (in characters) are wrapped.
      */
     class ToolTipToRichTextFilter : public QObject
     {
@@ -438,4 +438,4 @@ namespace GUIUtil
 
 } // namespace GUIUtil
 
-#endif // BITCOIN_QT_GUIUTIL_H
+#endif // PEPPACOIN_QT_GUIUTIL_H

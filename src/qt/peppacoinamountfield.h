@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_BITCOINAMOUNTFIELD_H
-#define BITCOIN_QT_BITCOINAMOUNTFIELD_H
+#ifndef PEPPACOIN_QT_PEPPACOINAMOUNTFIELD_H
+#define PEPPACOIN_QT_PEPPACOINAMOUNTFIELD_H
 
 #include <consensus/amount.h>
 #include <qt/peppacoinunits.h>
@@ -82,4 +82,4 @@ private Q_SLOTS:
 
 };
 
-#endif // BITCOIN_QT_BITCOINAMOUNTFIELD_H
+#endif // PEPPACOIN_QT_PEPPACOINAMOUNTFIELD_H
