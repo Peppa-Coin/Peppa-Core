@@ -1,9 +1,9 @@
-// Copyright (c) 2021-2022 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_WALLET_TEST_UTIL_H
-#define BITCOIN_WALLET_TEST_UTIL_H
+#ifndef PEPPACOIN_WALLET_TEST_UTIL_H
+#define PEPPACOIN_WALLET_TEST_UTIL_H
 
 #include <script/standard.h>
 #include <memory>
@@ -33,4 +33,4 @@ CTxDestination getNewDestination(CWallet& w, OutputType output_type);
 
 } // namespace wallet
 
-#endif // BITCOIN_WALLET_TEST_UTIL_H
+#endif // PEPPACOIN_WALLET_TEST_UTIL_H

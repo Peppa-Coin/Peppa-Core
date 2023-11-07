@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitcoin Core developers
+// Copyright (c) 2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_TXMEMPOOL_H
-#define BITCOIN_TEST_UTIL_TXMEMPOOL_H
+#ifndef PEPPACOIN_TEST_UTIL_TXMEMPOOL_H
+#define PEPPACOIN_TEST_UTIL_TXMEMPOOL_H
 
 #include <txmempool.h>
 #include <util/time.h>
@@ -34,4 +34,4 @@ struct TestMemPoolEntryHelper {
     TestMemPoolEntryHelper& SigOpsCost(unsigned int _sigopsCost) { sigOpCost = _sigopsCost; return *this; }
 };
 
-#endif // BITCOIN_TEST_UTIL_TXMEMPOOL_H
+#endif // PEPPACOIN_TEST_UTIL_TXMEMPOOL_H

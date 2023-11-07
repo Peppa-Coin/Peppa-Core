@@ -1,9 +1,9 @@
-// Copyright (c) 2022 The Bitcoin Core developers
+// Copyright (c) 2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_KERNEL_CHAINSTATEMANAGER_OPTS_H
-#define BITCOIN_KERNEL_CHAINSTATEMANAGER_OPTS_H
+#ifndef PEPPACOIN_KERNEL_CHAINSTATEMANAGER_OPTS_H
+#define PEPPACOIN_KERNEL_CHAINSTATEMANAGER_OPTS_H
 
 #include <arith_uint256.h>
 #include <dbwrapper.h>
@@ -46,4 +46,4 @@ struct ChainstateManagerOpts {
 
 } // namespace kernel
 
-#endif // BITCOIN_KERNEL_CHAINSTATEMANAGER_OPTS_H
+#endif // PEPPACOIN_KERNEL_CHAINSTATEMANAGER_OPTS_H

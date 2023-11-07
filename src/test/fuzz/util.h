@@ -1,9 +1,9 @@
-// Copyright (c) 2009-2022 The Bitcoin Core developers
+// Copyright (c) 2009-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_FUZZ_UTIL_H
-#define BITCOIN_TEST_FUZZ_UTIL_H
+#ifndef PEPPACOIN_TEST_FUZZ_UTIL_H
+#define PEPPACOIN_TEST_FUZZ_UTIL_H
 
 #include <arith_uint256.h>
 #include <chainparamsbase.h>
@@ -324,4 +324,4 @@ void ReadFromStream(FuzzedDataProvider& fuzzed_data_provider, Stream& stream) no
     }
 }
 
-#endif // BITCOIN_TEST_FUZZ_UTIL_H
+#endif // PEPPACOIN_TEST_FUZZ_UTIL_H

@@ -1,36 +1,36 @@
 #!/usr/bin/env bash
 #
-#  bitcoind The bitcoin core server.
+#  peppacoind The peppacoin core server.
 #
 #
 # chkconfig: 345 80 20
-# description: bitcoind
-# processname: bitcoind
+# description: peppacoind
+# processname: peppacoind
 #
 
 # Source function library.
 . /etc/init.d/functions
 
-# you can override defaults in /etc/sysconfig/bitcoind, see below
-if [ -f /etc/sysconfig/bitcoind ]; then
-        . /etc/sysconfig/bitcoind
+# you can override defaults in /etc/sysconfig/peppacoind, see below
+if [ -f /etc/sysconfig/peppacoind ]; then
+        . /etc/sysconfig/peppacoind
 fi
 
 RETVAL=0
 
-prog=bitcoind
-# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/bitcoind
-lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/bitcoind}
+prog=peppacoind
+# you can override the lockfile via PEPPACOIND_LOCKFILE in /etc/sysconfig/peppacoind
+lockfile=${PEPPACOIND_LOCKFILE-/var/lock/subsys/peppacoind}
 
-# bitcoind defaults to /usr/bin/bitcoind, override with BITCOIND_BIN
-bitcoind=${BITCOIND_BIN-/usr/bin/bitcoind}
+# peppacoind defaults to /usr/bin/peppacoind, override with PEPPACOIND_BIN
+peppacoind=${PEPPACOIND_BIN-/usr/bin/peppacoind}
 
-# bitcoind opts default to -disablewallet, override with BITCOIND_OPTS
-bitcoind_opts=${BITCOIND_OPTS--disablewallet}
+# peppacoind opts default to -disablewallet, override with PEPPACOIND_OPTS
+peppacoind_opts=${PEPPACOIND_OPTS--disablewallet}
 
 start() {
     echo -n $"Starting $prog: "
-    daemon $DAEMONOPTS $bitcoind $bitcoind_opts
+    daemon $DAEMONOPTS $peppacoind $peppacoind_opts
     RETVAL=$?
     echo
     [ $RETVAL -eq 0 ] && touch $lockfile

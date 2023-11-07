@@ -1,9 +1,9 @@
-// Copyright (c) 2021-2022 The Bitcoin Core developers
+// Copyright (c) 2021-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_RPC_SERVER_UTIL_H
-#define BITCOIN_RPC_SERVER_UTIL_H
+#ifndef PEPPACOIN_RPC_SERVER_UTIL_H
+#define PEPPACOIN_RPC_SERVER_UTIL_H
 
 #include <any>
 
@@ -32,4 +32,4 @@ CBlockPolicyEstimator& EnsureAnyFeeEstimator(const std::any& context);
 CConnman& EnsureConnman(const node::NodeContext& node);
 PeerManager& EnsurePeerman(const node::NodeContext& node);
 
-#endif // BITCOIN_RPC_SERVER_UTIL_H
+#endif // PEPPACOIN_RPC_SERVER_UTIL_H

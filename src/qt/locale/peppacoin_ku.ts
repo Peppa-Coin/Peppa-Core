@@ -174,7 +174,7 @@
     </message>
     </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>PeppacoinGUI</name>
     <message>
         <source>Wallet:</source>
         <translation type="unfinished">Cizdan:</translation>
@@ -191,7 +191,7 @@
         <translation type="unfinished">Agahî</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network.</source>
+        <source>%n active connection(s) to Peppacoin network.</source>
         <extracomment>A substring of the tooltip.</extracomment>
         <translation type="unfinished">
             <numerusform />

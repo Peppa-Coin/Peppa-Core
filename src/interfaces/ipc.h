@@ -1,9 +1,9 @@
-// Copyright (c) 2021 The Bitcoin Core developers
+// Copyright (c) 2021 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_INTERFACES_IPC_H
-#define BITCOIN_INTERFACES_IPC_H
+#ifndef PEPPACOIN_INTERFACES_IPC_H
+#define PEPPACOIN_INTERFACES_IPC_H
 
 #include <functional>
 #include <memory>
@@ -75,4 +75,4 @@ protected:
 std::unique_ptr<Ipc> MakeIpc(const char* exe_name, const char* process_argv0, Init& init);
 } // namespace interfaces
 
-#endif // BITCOIN_INTERFACES_IPC_H
+#endif // PEPPACOIN_INTERFACES_IPC_H

@@ -20,7 +20,7 @@ public:
     State validate(QString &input, int &pos) const override;
 };
 
-/** Peppacoin address widget validator, checks for a valid bitcoin address.
+/** Peppacoin address widget validator, checks for a valid peppacoin address.
  */
 class PeppacoinAddressCheckValidator : public QValidator
 {

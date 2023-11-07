@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2022 The Bitcoin Core developers
+# Copyright (c) 2018-2022 The Peppacoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the Partially Signed Transaction RPCs.
@@ -31,7 +31,7 @@ from test_framework.psbt import (
     PSBT_OUT_TAP_TREE,
 )
 from test_framework.script import CScript, OP_TRUE
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import PeppacoinTestFramework
 from test_framework.util import (
     assert_approx,
     assert_equal,
@@ -48,7 +48,7 @@ import json
 import os
 
 
-class PSBTTest(BitcoinTestFramework):
+class PSBTTest(PeppacoinTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 

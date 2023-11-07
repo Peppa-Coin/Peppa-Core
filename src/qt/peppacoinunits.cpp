@@ -53,9 +53,9 @@ QString PeppacoinUnits::shortName(Unit unit)
 QString PeppacoinUnits::description(Unit unit)
 {
     switch (unit) {
-    case Unit::DRI: return QString("Peppa-coins");
-    case Unit::mDRI: return QString("Milli-Peppa-coins (1 / 1" THIN_SP_UTF8 "000)");
-    case Unit::uDRI: return QString("Micro-Peppa-coins (peppas) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case Unit::DRI: return QString("Peppacoins");
+    case Unit::mDRI: return QString("Milli-Peppacoins (1 / 1" THIN_SP_UTF8 "000)");
+    case Unit::uDRI: return QString("Micro-Peppacoins (peppas) (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     case Unit::CAC: return QString("Cactus (cac) (1 / 100" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     } // no default case, so the compiler can warn about missing cases
     assert(false);

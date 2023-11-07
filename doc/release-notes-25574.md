@@ -3,7 +3,7 @@ Updated settings
 
 If the `-checkblocks` or `-checklevel` options are explicitly provided by the
 user, but the verification checks cannot be completed due to an insufficient
-dbcache, Bitcoin Core will now return an error at startup. (#25574)
+dbcache, Peppacoin Core will now return an error at startup. (#25574)
 
 RPC
 ---

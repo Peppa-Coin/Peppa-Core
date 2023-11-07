@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-# Copyright (c) 2014-2022 The Bitcoin Core developers
+# Copyright (c) 2014-2022 The Peppacoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the wallet accounts properly when there is a double-spend conflict."""
 from decimal import Decimal
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import PeppacoinTestFramework
 from test_framework.util import (
     assert_equal,
     find_output,
@@ -13,7 +13,7 @@ from test_framework.util import (
 )
 
 
-class TxnMallTest(BitcoinTestFramework):
+class TxnMallTest(PeppacoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 3
         self.supports_cli = False

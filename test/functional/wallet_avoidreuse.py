@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2022 The Bitcoin Core developers
+# Copyright (c) 2018-2022 The Peppacoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the avoid_reuse and setwalletflag features."""
 
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import PeppacoinTestFramework
 from test_framework.util import (
     assert_approx,
     assert_equal,
@@ -62,7 +62,7 @@ def assert_balances(node, mine, margin=0.001):
     for k,v in mine.items():
         assert_approx(got[k], v, margin)
 
-class AvoidReuseTest(BitcoinTestFramework):
+class AvoidReuseTest(PeppacoinTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 

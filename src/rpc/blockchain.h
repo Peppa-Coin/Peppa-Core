@@ -1,9 +1,9 @@
-// Copyright (c) 2017-2022 The Bitcoin Core developers
+// Copyright (c) 2017-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_RPC_BLOCKCHAIN_H
-#define BITCOIN_RPC_BLOCKCHAIN_H
+#ifndef PEPPACOIN_RPC_BLOCKCHAIN_H
+#define PEPPACOIN_RPC_BLOCKCHAIN_H
 
 #include <consensus/amount.h>
 #include <core_io.h>
@@ -57,4 +57,4 @@ UniValue CreateUTXOSnapshot(
     const fs::path& path,
     const fs::path& tmppath);
 
-#endif // BITCOIN_RPC_BLOCKCHAIN_H
+#endif // PEPPACOIN_RPC_BLOCKCHAIN_H

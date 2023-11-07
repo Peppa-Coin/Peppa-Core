@@ -1,9 +1,9 @@
-// Copyright (c) 2020-2022 The Bitcoin Core developers
+// Copyright (c) 2020-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TEST_UTIL_NET_H
-#define BITCOIN_TEST_UTIL_NET_H
+#ifndef PEPPACOIN_TEST_UTIL_NET_H
+#define PEPPACOIN_TEST_UTIL_NET_H
 
 #include <compat/compat.h>
 #include <node/eviction.h>
@@ -196,4 +196,4 @@ private:
 
 std::vector<NodeEvictionCandidate> GetRandomNodeEvictionCandidates(int n_candidates, FastRandomContext& random_context);
 
-#endif // BITCOIN_TEST_UTIL_NET_H
+#endif // PEPPACOIN_TEST_UTIL_NET_H

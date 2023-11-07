@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitcoin Core developers
+// Copyright (c) 2009-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_NODE_UTXO_SNAPSHOT_H
-#define BITCOIN_NODE_UTXO_SNAPSHOT_H
+#ifndef PEPPACOIN_NODE_UTXO_SNAPSHOT_H
+#define PEPPACOIN_NODE_UTXO_SNAPSHOT_H
 
 #include <fs.h>
 #include <kernel/cs_main.h>
@@ -71,4 +71,4 @@ std::optional<fs::path> FindSnapshotChainstateDir();
 
 } // namespace node
 
-#endif // BITCOIN_NODE_UTXO_SNAPSHOT_H
+#endif // PEPPACOIN_NODE_UTXO_SNAPSHOT_H

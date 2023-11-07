@@ -19,7 +19,7 @@ persistent_worker_template: &PERSISTENT_WORKER_TEMPLATE
 
 # https://cirrus-ci.org/guide/tips-and-tricks/#sharing-configuration-between-tasks
 filter_template: &FILTER_TEMPLATE
-  skip: $CIRRUS_REPO_FULL_NAME == "bitcoin-core/gui" && $CIRRUS_PR == ""  # No need to run on the read-only mirror, unless it is a PR. https://cirrus-ci.org/guide/writing-tasks/#conditional-task-execution
+  skip: $CIRRUS_REPO_FULL_NAME == "peppacoin-core/gui" && $CIRRUS_PR == ""  # No need to run on the read-only mirror, unless it is a PR. https://cirrus-ci.org/guide/writing-tasks/#conditional-task-execution
   stateful: false  # https://cirrus-ci.org/guide/writing-tasks/#stateful-tasks
 
 base_template: &BASE_TEMPLATE
@@ -58,7 +58,7 @@ global_task_template: &GLOBAL_TASK_TEMPLATE
 compute_credits_template: &CREDITS_TEMPLATE
   # https://cirrus-ci.org/pricing/#compute-credits
   # Only use credits for pull requests to the main repo
-  use_compute_credits: $CIRRUS_REPO_FULL_NAME == 'bitcoin/bitcoin' && $CIRRUS_PR != ""
+  use_compute_credits: $CIRRUS_REPO_FULL_NAME == 'peppacoin/peppacoin' && $CIRRUS_PR != ""
 
 task:
   name: 'lint [bookworm]'
@@ -173,11 +173,11 @@ task:
     - cd %CIRRUS_WORKING_DIR%
     - ccache --zero-stats --max-size=%CCACHE_SIZE%
     - python build_msvc\msvc-autogen.py
-    - msbuild build_msvc\bitcoin.sln -property:CLToolExe=%WRAPPED_CL%;UseMultiToolTask=true;Configuration=Release -maxCpuCount -verbosity:minimal -noLogo
+    - msbuild build_msvc\peppacoin.sln -property:CLToolExe=%WRAPPED_CL%;UseMultiToolTask=true;Configuration=Release -maxCpuCount -verbosity:minimal -noLogo
     - ccache --show-stats
   check_script:
-    - src\test_bitcoin.exe -l test_suite
-    - src\bench_bitcoin.exe --sanity-check
+    - src\test_peppacoin.exe -l test_suite
+    - src\bench_peppacoin.exe --sanity-check
     - python test\util\test_runner.py
     - python test\util\rpcauth-test.py
   functional_tests_script:
@@ -256,7 +256,7 @@ task:
   name: '[ASan + LSan + UBSan + integer, no depends, USDT] [jammy]'
   << : *GLOBAL_TASK_TEMPLATE
   # We can't use a 'container' for the USDT interface tests as the CirrusCI
-  # containers don't have privileges to hook into bitcoind. CirrusCI uses
+  # containers don't have privileges to hook into peppacoind. CirrusCI uses
   # Google Compute Engine instances: https://cirrus-ci.org/guide/custom-vms/
   # Images can be found here: https://cloud.google.com/compute/docs/images/os-details
   compute_engine_instance:
@@ -293,13 +293,13 @@ task:
     FILE_ENV: "./ci/test/00_setup_env_i686_multiprocess.sh"
 
 task:
-  name: '[no wallet, libbitcoinkernel] [buster]'
+  name: '[no wallet, libpeppacoinkernel] [buster]'
   << : *GLOBAL_TASK_TEMPLATE
   container:
     image: debian:buster
   env:
     << : *CIRRUS_EPHEMERAL_WORKER_TEMPLATE_ENV
-    FILE_ENV: "./ci/test/00_setup_env_native_nowallet_libbitcoinkernel.sh"
+    FILE_ENV: "./ci/test/00_setup_env_native_nowallet_libpeppacoinkernel.sh"
 
 task:
   name: 'macOS 10.15 [gui, no tests] [focal]'

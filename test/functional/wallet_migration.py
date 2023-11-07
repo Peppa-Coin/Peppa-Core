@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2020-2022 The Bitcoin Core developers
+# Copyright (c) 2020-2022 The Peppacoin Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test Migrating a wallet from legacy to descriptor."""
@@ -7,7 +7,7 @@
 import os
 import random
 from test_framework.descriptors import descsum_create
-from test_framework.test_framework import BitcoinTestFramework
+from test_framework.test_framework import PeppacoinTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
@@ -18,7 +18,7 @@ from test_framework.wallet_util import (
 )
 
 
-class WalletMigrationTest(BitcoinTestFramework):
+class WalletMigrationTest(PeppacoinTestFramework):
     def add_options(self, parser):
         self.add_wallet_options(parser)
 

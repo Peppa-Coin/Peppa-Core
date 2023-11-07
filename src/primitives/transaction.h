@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2022 The Bitcoin Core developers
+// Copyright (c) 2009-2022 The Peppacoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_PRIMITIVES_TRANSACTION_H
-#define BITCOIN_PRIMITIVES_TRANSACTION_H
+#ifndef PEPPACOIN_PRIMITIVES_TRANSACTION_H
+#define PEPPACOIN_PRIMITIVES_TRANSACTION_H
 
 #include <consensus/amount.h>
 #include <prevector.h>
@@ -437,4 +437,4 @@ public:
     friend bool operator<(const GenTxid& a, const GenTxid& b) { return std::tie(a.m_is_wtxid, a.m_hash) < std::tie(b.m_is_wtxid, b.m_hash); }
 };
 
-#endif // BITCOIN_PRIMITIVES_TRANSACTION_H
+#endif // PEPPACOIN_PRIMITIVES_TRANSACTION_H
